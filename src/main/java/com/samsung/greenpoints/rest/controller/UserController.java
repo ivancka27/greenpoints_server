@@ -11,6 +11,7 @@ public interface UserController {
     UserDto getById(long id);
     UserDto getByIdAndName(long id, String name);
     UserDto getByIdAndEmail(long id, String email);
+    UserDto getByEmail(String email);
     UserDto insert(UserDto user);
     UserDto update(UserDto user);
     void delete(long id);

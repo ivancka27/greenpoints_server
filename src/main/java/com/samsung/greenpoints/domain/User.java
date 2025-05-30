@@ -63,4 +63,24 @@ public class User {
     public CountryEnum getCountry() {
         return country;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPathToImage(String pathToImage) {
+        this.pathToImage = pathToImage;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public void setCountry(CountryEnum country) {
+        this.country = country;
+    }
 }

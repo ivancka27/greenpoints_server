@@ -3,11 +3,11 @@ package com.samsung.greenpoints.rest.controller;
 import com.samsung.greenpoints.domain.User;
 import com.samsung.greenpoints.rest.dto.UserDto;
 import com.samsung.greenpoints.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/user")
 @RestController
 public class UserControllerImpl implements UserController{
 
@@ -17,7 +17,7 @@ public class UserControllerImpl implements UserController{
         this.userService = userService;
     }
 
-    @GetMapping(path = "/user")
+    @GetMapping
     @Override
     public List<UserDto> getAll() {
         return userService.getAll().stream().map(e -> UserDto.userToDto(e)).toList();
@@ -25,32 +25,43 @@ public class UserControllerImpl implements UserController{
 
     @GetMapping(path = "/user/{c_id}")
     @Override
-    public UserDto getById(long id) {
+    public UserDto getById(@PathVariable(name = "c_id") long id) {
         return UserDto.userToDto(userService.getById(id));
     }
 
+    @GetMapping("/byIdAndName")
     @Override
-    public UserDto getByIdAndName(long id, String name) {
+    public UserDto getByIdAndName(@RequestParam long id, @RequestParam String name) {
         return UserDto.userToDto(userService.getByIdAndName(id, name));
     }
 
+    @GetMapping("/byIdAndEmail")
     @Override
-    public UserDto getByIdAndEmail(long id, String email) {
+    public UserDto getByIdAndEmail(@RequestParam long id, @RequestParam String email) {
         return UserDto.userToDto(userService.getByIdAndEmail(id, email));
     }
 
+    @GetMapping("/byEmail")
     @Override
-    public UserDto insert(UserDto user) {
+    public UserDto getByEmail(@RequestParam String email) {
+        return UserDto.userToDto(userService.getByEmail(email));
+    }
+
+    @PostMapping
+    @Override
+    public UserDto insert(@RequestBody UserDto user) {
         return UserDto.userToDto(userService.insert(UserDto.userFromDto(user)));
     }
 
+    @PutMapping
     @Override
-    public UserDto update(UserDto user) {
+    public UserDto update(@RequestBody UserDto user) {
         return UserDto.userToDto(userService.update(UserDto.userFromDto(user)));
     }
 
+    @DeleteMapping("/{id}")
     @Override
-    public void delete(long id) {
+    public void delete(@PathVariable long id) {
         userService.delete(id);
     }
 

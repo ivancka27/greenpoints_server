@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getByEmail(String email) {
+        return repository.findUserByEmail(email);
+    }
+
+    @Override
     public User insert(User user) {
         long id = user.getId();
         if(id != 0){
