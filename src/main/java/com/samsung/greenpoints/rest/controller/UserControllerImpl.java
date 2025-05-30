@@ -31,27 +31,27 @@ public class UserControllerImpl implements UserController{
 
     @Override
     public UserDto getByIdAndName(long id, String name) {
-        return null;
+        return UserDto.userToDto(userService.getByIdAndName(id, name));
     }
 
     @Override
     public UserDto getByIdAndEmail(long id, String email) {
-        return null;
+        return UserDto.userToDto(userService.getByIdAndEmail(id, email));
     }
 
     @Override
-    public UserDto insert(User user) {
-        return null;
+    public UserDto insert(UserDto user) {
+        return UserDto.userToDto(userService.insert(UserDto.userFromDto(user)));
     }
 
     @Override
-    public UserDto update(User user) {
-        return null;
+    public UserDto update(UserDto user) {
+        return UserDto.userToDto(userService.update(UserDto.userFromDto(user)));
     }
 
     @Override
     public void delete(long id) {
-
+        userService.delete(id);
     }
 
 
