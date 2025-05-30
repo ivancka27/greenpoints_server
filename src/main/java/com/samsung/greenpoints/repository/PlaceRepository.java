@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface PlaceRepository extends JpaRepository<Place, Long> {
 
     Place findPlaceById(long id);
-
+    Place findPlaceByName(String name);
 }

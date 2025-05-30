@@ -36,6 +36,9 @@ public class Place {
     @Column(name = "longitude")
     private double longitude;
 
+    public Place() {
+    }
+
     public Place(long id, String name, String pathToImage, String address, double rating, String description, int commentsCount, double latitude, double longitude) {
         this.id = id;
         this.name = name;

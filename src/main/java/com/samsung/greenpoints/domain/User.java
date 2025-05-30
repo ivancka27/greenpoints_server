@@ -12,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final long id;
+    private long id;
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
@@ -23,20 +23,22 @@ public class User {
     @Column(name = "pathToImage")
     private String pathToImage;
 
-    @Column(name = "nick")
-    private String nick;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "country")
     @Enumerated(value = EnumType.STRING)
     private CountryEnum country;
 
+    public User() {
+    }
 
     public User(long id, String email, String password, String pathToImage, String nick, CountryEnum country) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.pathToImage = pathToImage;
-        this.nick = nick;
+        this.name = nick;
         this.country = country;
     }
 
@@ -56,8 +58,8 @@ public class User {
         return pathToImage;
     }
 
-    public String getNick() {
-        return nick;
+    public String getName() {
+        return name;
     }
 
     public CountryEnum getCountry() {
@@ -77,7 +79,7 @@ public class User {
     }
 
     public void setNick(String nick) {
-        this.nick = nick;
+        this.name = nick;
     }
 
     public void setCountry(CountryEnum country) {

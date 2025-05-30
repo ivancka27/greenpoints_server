@@ -14,9 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/place")
 public class PlaceControllerImpl implements PlaceController{
-    private final PlaceServiceImpl placeService;
+    private final PlaceService placeService;
 
-    public PlaceControllerImpl(PlaceServiceImpl placeService) {
+    public PlaceControllerImpl(PlaceService placeService) {
         this.placeService = placeService;
     }
 
@@ -27,7 +27,7 @@ public class PlaceControllerImpl implements PlaceController{
 
     @PostMapping
     @Override
-    public PlaceDto save(PlaceDto place) {
+    public PlaceDto save(@RequestBody PlaceDto place) {
         return PlaceDto.PlaceToDto(placeService.save(PlaceDto.PlaceFromDto(place)));
     }
 
@@ -35,6 +35,12 @@ public class PlaceControllerImpl implements PlaceController{
     @Override
     public PlaceDto findPlaceById(@PathVariable long id) {
         return PlaceDto.PlaceToDto(placeService.findPlaceById(id));
+    }
+
+    @GetMapping("/byName")
+    @Override
+    public PlaceDto findPlaceByName(@RequestParam String name) {
+        return PlaceDto.PlaceToDto(placeService.findPlaceByName(name));
     }
 
     @GetMapping

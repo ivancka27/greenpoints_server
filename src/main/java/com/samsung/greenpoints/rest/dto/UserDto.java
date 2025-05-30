@@ -21,7 +21,7 @@ public class UserDto {
     }
 
     public static UserDto userToDto(User user){
-        return new UserDto(user.getId(), user.getEmail(), user.getPassword(), user.getPathToImage(), user.getNick(), user.getCountry());
+        return new UserDto(user.getId(), user.getEmail(), user.getPassword(), user.getPathToImage(), user.getName(), user.getCountry());
     }
 
     public static User userFromDto(UserDto dto){

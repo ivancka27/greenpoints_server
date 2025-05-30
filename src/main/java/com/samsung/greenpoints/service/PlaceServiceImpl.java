@@ -4,18 +4,23 @@ import com.samsung.greenpoints.domain.*;
 import com.samsung.greenpoints.exceptions.IdNotValidException;
 import com.samsung.greenpoints.exceptions.UserNotFoundException;
 import com.samsung.greenpoints.repository.*;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PlaceServiceImpl implements PlaceService{
 
-    private final UserRepository userRepository;
-    private final PlaceRepository placeRepository;
-    private final FavoriteRepository favoriteRepository;
-    private final RatingRepository ratingRepository;
-    private final CommentRepository commentRepository;
+    private UserRepository userRepository;
+    private PlaceRepository placeRepository;
+    private FavoriteRepository favoriteRepository;
+    private RatingRepository ratingRepository;
+    private CommentRepository commentRepository;
+
+    public PlaceServiceImpl() {
+    }
 
     public PlaceServiceImpl(UserRepository userRepository, PlaceRepository placeRepository, FavoriteRepository favoriteRepository, RatingRepository ratingRepository, CommentRepository commentRepository) {
         this.userRepository = userRepository;
@@ -33,6 +38,11 @@ public class PlaceServiceImpl implements PlaceService{
         if(id <= 0) throw new IdNotValidException("Id must be positive!");
         return placeRepository.findById(id).orElseThrow(
                 () -> new UserNotFoundException("Place with id " + id + " was not found"));
+    }
+
+    @Override
+    public Place findPlaceByName(String name) {
+        return placeRepository.findPlaceByName(name);
     }
 
     public List<Place> findAll() {

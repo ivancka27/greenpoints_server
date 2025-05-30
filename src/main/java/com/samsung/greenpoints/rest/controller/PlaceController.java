@@ -9,6 +9,7 @@ public interface PlaceController {
 
     PlaceDto save(PlaceDto place);
     PlaceDto findPlaceById(long id);
+    PlaceDto findPlaceByName(String name);
     List<PlaceDto> findAll();
     void deleteById(long id);
 }
