@@ -2,6 +2,7 @@ package com.samsung.greenpoints;
 
 import com.samsung.greenpoints.domain.Place;
 import com.samsung.greenpoints.rest.controller.PlaceController;
+import com.samsung.greenpoints.rest.dto.PlaceDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GreenpointsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GreenpointsApplication.class, args);
 
 
 		Place place1 = new Place(
@@ -254,5 +254,25 @@ public class GreenpointsApplication {
 
 		PlaceController controller = SpringApplication.run(
 				GreenpointsApplication.class, args).getBean(PlaceController.class);
+		controller.save(PlaceDto.PlaceToDto(place1));
+		controller.save(PlaceDto.PlaceToDto(place2));
+		controller.save(PlaceDto.PlaceToDto(place3));
+		controller.save(PlaceDto.PlaceToDto(place4));
+		controller.save(PlaceDto.PlaceToDto(place5));
+		controller.save(PlaceDto.PlaceToDto(place6));
+		controller.save(PlaceDto.PlaceToDto(place7));
+		controller.save(PlaceDto.PlaceToDto(place8));
+		controller.save(PlaceDto.PlaceToDto(place9));
+		controller.save(PlaceDto.PlaceToDto(place10));
+		controller.save(PlaceDto.PlaceToDto(place11));
+		controller.save(PlaceDto.PlaceToDto(place12));
+		controller.save(PlaceDto.PlaceToDto(place13));
+		controller.save(PlaceDto.PlaceToDto(place14));
+		controller.save(PlaceDto.PlaceToDto(place15));
+		controller.save(PlaceDto.PlaceToDto(place16));
+		controller.save(PlaceDto.PlaceToDto(place17));
+		controller.save(PlaceDto.PlaceToDto(place18));
+		controller.save(PlaceDto.PlaceToDto(place19));
+		controller.save(PlaceDto.PlaceToDto(place20));
 	}
 }

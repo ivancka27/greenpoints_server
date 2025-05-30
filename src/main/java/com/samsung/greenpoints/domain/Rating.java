@@ -19,7 +19,7 @@ public class Rating {
     @JoinColumn(name = "place_id")
     private Place place;
 
-    @Column(nullable = false)
+    @Column(name = "val", nullable = false)
     private Integer value;
 
     public Rating() {

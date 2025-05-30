@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -33,12 +33,12 @@ public class User {
     public User() {
     }
 
-    public User(long id, String email, String password, String pathToImage, String nick, CountryEnum country) {
+    public User(long id, String email, String password, String pathToImage, String name, CountryEnum country) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.pathToImage = pathToImage;
-        this.name = nick;
+        this.name = name;
         this.country = country;
     }
 

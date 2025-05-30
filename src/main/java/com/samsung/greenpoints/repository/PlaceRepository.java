@@ -9,4 +9,5 @@ public interface PlaceRepository extends JpaRepository<Place, Long> {
 
     Place findPlaceById(long id);
     Place findPlaceByName(String name);
+    Place save(Place place);
 }

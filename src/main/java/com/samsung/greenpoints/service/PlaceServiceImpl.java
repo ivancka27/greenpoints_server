@@ -4,6 +4,7 @@ import com.samsung.greenpoints.domain.*;
 import com.samsung.greenpoints.exceptions.IdNotValidException;
 import com.samsung.greenpoints.exceptions.UserNotFoundException;
 import com.samsung.greenpoints.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,11 @@ public class PlaceServiceImpl implements PlaceService{
     private CommentRepository commentRepository;
 
     public PlaceServiceImpl() {
+    }
+
+    @Autowired
+    public PlaceServiceImpl(PlaceRepository placeRepository) {
+        this.placeRepository = placeRepository;
     }
 
     public PlaceServiceImpl(UserRepository userRepository, PlaceRepository placeRepository, FavoriteRepository favoriteRepository, RatingRepository ratingRepository, CommentRepository commentRepository) {
